@@ -12,7 +12,7 @@
             [routerLinkActive]="['link-active']"
             [routerLinkActiveOptions]="{ exact: true }"
           >
-            <a class="nav-link text-dark" *ngIf="!isLoggedIn()" [routerLink]="['/autenticacao']">
+            <a class="nav-link text-dark" *ngIf="!isLoggedIn()" [routerLink]="['/login']">
                <i class="fas fa-sign-in-alt">  Acesso restrito</i>
             </a>
             <a class="nav-link text-dark" *ngIf="isLoggedIn()" (click)="logout()" >

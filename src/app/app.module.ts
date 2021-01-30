@@ -43,17 +43,12 @@ import { AuthGuardService } from './core/services/auth-guard.service';
         component: HomeComponent, pathMatch: 'full'
       },
       {
-        path: 'autenticacao',
+        path: 'login',
         component: AutenticacaoComponent
       },
       {
         path: 'ouvidoria',
         component: OuvidoriaComponent
-      },
-      {
-        path: 'gestaoprojetos',
-        component: MgepComponent,
-        canLoad: [AuthGuardService]
       },
       {
         path: 'blog',
@@ -67,6 +62,13 @@ import { AuthGuardService } from './core/services/auth-guard.service';
         path: 'cidadao',
         loadChildren: () => import('./pages/iptu/iptu.module').then(m => m.IptuModule)
       },
+      {
+        path: 'gestaoprojetos',
+        component: MgepComponent,
+        canActivate: [AuthGuardService]
+      },
+      // otherwise redirect to home
+      { path: '**', redirectTo: '', pathMatch: 'full' }
     ])
   ],
   bootstrap: [AppComponent]
