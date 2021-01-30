@@ -1,0 +1,21 @@
+<form *ngIf="!isLoggedIn()" [formGroup]="loginForm" class="form-signin">
+  <h1 class="h3 mb-3 font-weight-normal">Realizar login</h1>
+  <label for="inputEmail" class="sr-only">Email</label>
+  <input formControlName="login" ngClass="email" type="email" id="inputEmail" class="form-control" placeholder="Email" required autofocus>
+  <label for="inputPassword" class="sr-only">Senha</label>
+  <input formControlName="password" type="password" id="inputPassword" class="form-control" placeholder="Senha" required>
+  <div class="checkbox mb-3">
+    <label>
+      <input type="checkbox" value="remember-me"> Lembrar das minhas credenciais
+    </label>
+  </div>
+  <button class="btn btn-lg btn-primary btn-block" (click)="login()">Fazer login</button>
+</form>
+<div *ngIf="isLoggedIn()" >
+  Você já está logado.
+  
+  <button class="btn btn-sm-3 btn-primary btn-block" (click)="logout()">Fazer logout</button>
+  <p></p>
+  <p></p>
+  <p></p>
+</div>

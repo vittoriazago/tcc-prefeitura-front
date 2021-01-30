@@ -1,0 +1,45 @@
+
+<div class="container">
+  <div class="py-5 text-center">
+    <h2>Agendar horário na prefeitura</h2>
+    <button class="btn btn-primary btn-sm btn-block">Ver meus agendamentos</button>
+  
+  </div>
+
+  <div >
+   <form class="needs-validation" novalidate>
+     <div class="row">
+       <div class="col-md-6 mb-6">
+         <label for="cpf">CPF: *</label>
+         <input type="text" class="form-control" id="cpf" placeholder="" value="" required>
+         <div class="invalid-feedback">
+            CPF é obrigatório
+         </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6 mb-6">
+          <label for="fullName">NOME COMPLETO: *</label>
+          <input type="text" class="form-control" id="fullName" placeholder="" value="" required>
+          <div class="invalid-feedback">
+            NOME COMPLETO é obrigatório
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6 mb-6">
+          <label for="fullName">TIPO AGENDAMENTO: *</label>
+          <select class="form-control" id="type" >
+            <option>Default select</option>
+          </select>          
+          <div class="invalid-feedback">
+            TIPO AGENDAMENTO é obrigatório
+          </div>
+        </div>
+      </div>
+
+     <hr class="mb-4">
+     <button class="btn btn-primary btn-lg btn-block" type="submit">Agendar</button>
+   </form>
+  </div>
+</div>

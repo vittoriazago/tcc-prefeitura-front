@@ -1,0 +1,5 @@
+<div class="blog-post" *ngIf="noticia">
+  <h2 class="blog-post-title">{{ noticia.Descricao }}</h2>
+  <p class="blog-post-meta">{{ noticia.DataCadastro | date: 'dd/MM/yyyy' }}. Autoria: {{ noticia.NomesAutores.join(', ') }}</p>
+  <div [innerHTML]="noticia.ConteudoHtml"></div>
+</div><!-- /.blog-post -->

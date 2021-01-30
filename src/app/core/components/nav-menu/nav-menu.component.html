@@ -1,0 +1,76 @@
+  <nav
+    class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3"  >
+    <div class="container"> 
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target=".navbar-collapse"
+        aria-label="Toggle navigation"
+        [attr.aria-expanded]="isExpanded"
+        (click)="toggle()"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div
+        class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse"
+        [ngClass]="{ show: isExpanded }">
+        <ul class="navbar-nav flex-grow">
+          <li class="nav-item">
+            <a class="nav-link" [routerLink]="['/']">Início</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Cidadão
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="#">Concursos</a>
+              <a class="dropdown-item" href="#">Minha Casa Minha Vida</a>
+              <a class="dropdown-item" href="#">IPVA</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" [routerLink]="['/ouvidoria']" >Ouvidoria</a>
+            </div>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Empresa
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="#">Vagas de emprego</a>
+              <a class="dropdown-item" href="#">Licitações</a>
+              <a class="dropdown-item" [routerLink]="['/iptu']">IPTU</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" [routerLink]="['/ouvidoria']" >Ouvidoria</a>
+            </div>
+          </li>
+          <li *ngIf="getPerfilAcessoServidor()" class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Integrações
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="#">Saúde do Cidadão</a>
+              <a class="dropdown-item" [routerLink]="['/cidadao']">Serviços ao Cidadão</a>
+              <a class="dropdown-item" [routerLink]="['/gestaoprojetos']">Gestão Estratégica de Projetos</a>
+              <a class="dropdown-item" href="#">Sistema Administrativo-Financeiro de Gestão Municipal</a>
+              <a class="dropdown-item" href="#">Administração Escolar Multiserial</a>
+              <a class="dropdown-item" href="#">Tributação Territorial Urbana e Rural</a>
+              <a class="dropdown-item" href="#">Informações Municipais Georreferenciadas</a>
+              <a class="dropdown-item" href="#">Business Intelligence</a>
+            </div>
+          </li> <li *ngIf="getPerfilAcessoMunicipe()" class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Integrações
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="#">Saúde do Cidadão</a>
+              <a class="dropdown-item" [routerLink]="['/cidadao']">Serviços ao Cidadão</a>
+              <a class="dropdown-item" [routerLink]="['/gestaoprojetos']">Gestão Estratégica de Projetos</a>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" [routerLink]="['/']">Saúde</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>

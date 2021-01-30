@@ -1,0 +1,20 @@
+
+<main role="main" class="container">
+  <div class="row">
+    <div class="col-md-8 blog-main">
+      <div class="blog-post" *ngFor="let noticia of noticias">
+        <app-blog-post [noticia]="noticia" class="blog-post" > </app-blog-post>
+      </div><!-- /.blog-post -->
+
+     
+      <nav class="blog-pagination">
+        <a class="btn btn-outline-primary" href="#">Mais antigas</a>
+        <a class="btn btn-outline-secondary disabled" href="#">Mais recentes</a>
+      </nav>
+
+    </div><!-- /.blog-main -->
+
+    <app-blog-side class="col-md-4 blog-sidebar"></app-blog-side>
+  </div><!-- /.row -->
+
+</main>

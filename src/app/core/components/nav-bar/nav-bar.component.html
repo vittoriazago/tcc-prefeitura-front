@@ -1,0 +1,25 @@
+<header>
+  <nav
+    class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3"
+  >
+    <div class="container"> 
+      <img src="assets/images/logo.png" alt="logo mini" class="item-logo-nav">
+      <a class="blog-header-logo text-dark" [routerLink]="['/']">  Prefeitura de Bom Destino</a>
+     
+        <ul class="navbar-nav flex-grow">
+          <li
+            class="nav-item"
+            [routerLinkActive]="['link-active']"
+            [routerLinkActiveOptions]="{ exact: true }"
+          >
+            <a class="nav-link text-dark" *ngIf="!isLoggedIn()" [routerLink]="['/autenticacao']">
+               <i class="fas fa-sign-in-alt">  Acesso restrito</i>
+            </a>
+            <a class="nav-link text-dark" *ngIf="isLoggedIn()" (click)="logout()" >
+              <i class="fas fa-sign-out-alt"> Sair</i>
+            </a>
+          </li>
+        </ul>
+    </div>
+  </nav>
+</header>

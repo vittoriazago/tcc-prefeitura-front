@@ -1,0 +1,54 @@
+
+<div class="container">
+  <div class="py-5 text-center">
+    <h2>Ouvidoria</h2>
+  </div>
+
+  <div >
+   <h4 class="mb-3">Dados pessoais</h4>
+   <form class="needs-validation" novalidate>
+     <div class="row">
+       <div class="col-md-6 mb-3">
+         <label for="firstName">Nome</label>
+         <input type="text" class="form-control" id="firstName" placeholder="" value="" required>
+         <div class="invalid-feedback">
+           Nome é obrigatório
+         </div>
+       </div>
+       <div class="col-md-6 mb-3">
+         <label for="lastName">Sobrenome</label>
+         <input type="text" class="form-control" id="lastName" placeholder="" value="" required>
+         <div class="invalid-feedback">
+           Sobrenome é obrigatório
+         </div>
+       </div>
+     </div>
+
+     <div class="mb-3">
+       <label for="email">Email</label>
+       <input type="email" class="form-control" id="email" placeholder="you@example.com" required>
+       <div class="invalid-feedback">
+         Email é obrigatório
+       </div>
+     </div>
+
+     <div class="mb-3">
+       <label for="telefone">Telefone</label>
+       <input type="text" class="form-control" id="telefone" placeholder="(99)99999-9999" required>
+       <div class="invalid-feedback">
+         Telefone é obrigatório
+       </div>
+     </div>
+
+     <div class="mb-3">
+       <label for="solicitacao">Solicitação</label>
+       <textarea type="text" class="form-control" rows="5" id="solicitacao" placeholder="Digite algo para indicar seu problema, solicitação, recomendação." required></textarea>
+       <div class="invalid-feedback">
+         Solicitação é obrigatório
+       </div>
+     </div>
+     <hr class="mb-4">
+     <button class="btn btn-primary btn-lg btn-block" type="submit">Enviar dados</button>
+   </form>
+  </div>
+</div>
