@@ -1,0 +1,63 @@
+
+<div class="container">
+  <div class="py-5 text-center">
+    <h2>Cadastro de Usuário</h2>
+  </div>
+
+  <div >
+   <form [formGroup]="cadastroUsuarioForm" (ngSubmit)="cadastrarUsuario()" class="formContent">
+     <div class="row">
+       <div class="col-md-6 mb-3">
+         <label for="name">Nome Completo</label>
+         <input type="text" class="form-control" formControlName="nome" id="name" placeholder="" value="" required>
+         <div class="invalid-feedback">
+           Nome completo é obrigatório
+         </div>
+       </div>
+       <div class="col-md-6 mb-3">
+         <label for="document">CPF/CNPJ</label>
+         <input type="text" class="form-control" formControlName="documento" id="document" placeholder="" value="" required>
+         <div class="invalid-feedback">
+           CPFCNPJ é obrigatório
+         </div>
+       </div>
+     </div>
+
+     <div class="mb-3">
+       <label for="email">Email</label>
+       <input type="email" class="form-control" formControlName="email" id="email" placeholder="you@example.com" required>
+       <div class="invalid-feedback">
+         Email é obrigatório
+       </div>
+     </div>
+
+     <div class="mb-3">
+       <label for="telefone">Telefone</label>
+       <input type="text" class="form-control" formControlName="telefone" id="telefone" placeholder="(99)99999-9999" required>
+       <div class="invalid-feedback">
+         Telefone é obrigatório
+       </div>
+     </div>
+
+     <div class="row">
+      <div class="col-md-6 mb-3">
+        <label for="password">Senha</label>
+        <input type="password" class="form-control" formControlName="senha" id="password" placeholder="" value="" required>
+        <div class="invalid-feedback">
+          Senha é obrigatório
+        </div>
+      </div>
+      <div class="col-md-6 mb-3">
+        <label for="password2">Confirmar senha</label>
+        <input type="password" class="form-control" id="password2" placeholder="" value="" required>
+        <div class="invalid-feedback">
+          Confirmação de senha é obrigatório
+        </div>
+      </div>
+    </div>
+
+     <hr class="mb-4">
+     <button class="btn btn-primary btn-lg btn-block" type="submit">Cadastrar Usuario</button>
+   </form>
+  </div>
+</div>

@@ -10,10 +10,10 @@
     </label>
   </div>
   <button class="btn btn-lg btn-primary btn-block" (click)="login()">Fazer login</button>
+  <a [routerLink]="['/usuario/cadastro']">Ainda não possui um cadastro? Clique aqui.</a>
 </form>
 <div *ngIf="isLoggedIn()" >
-  Você já está logado.
-  
+  Você já está logado.  
   <button class="btn btn-sm-3 btn-primary btn-block" (click)="logout()">Fazer logout</button>
   <p></p>
   <p></p>

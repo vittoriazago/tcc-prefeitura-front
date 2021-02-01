@@ -17,6 +17,7 @@ import { AutenticacaoComponent } from './pages/autenticacao/autenticacao.compone
 import { IptuConsultaComponent } from './pages/iptu/iptu-consulta/iptu-consulta.component';
 import { MgepComponent } from './pages/mgep/mgep.component';
 import { AuthGuardService } from './core/services/auth-guard.service';
+import { UsuarioModule } from './pages/usuario/usuario.module';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { AuthGuardService } from './core/services/auth-guard.service';
     ReactiveFormsModule,
     CommonModule,
     BlogModule,
+    UsuarioModule,
     FontAwesomeModule,
     RouterModule.forRoot([
       {
@@ -53,6 +55,10 @@ import { AuthGuardService } from './core/services/auth-guard.service';
       {
         path: 'blog',
         loadChildren: () => import('./pages/blog/blog.module').then(m => m.BlogModule),
+      },
+      {
+        path: 'usuario',
+        loadChildren: () => import('./pages/usuario/usuario.module').then(m => m.UsuarioModule),
       },
       {
         path: 'iptu',
