@@ -18,7 +18,7 @@ export class PrefeituraService {
   }
 
   postUsuario(bodyCadastroUsuario: UsuarioCadastroModel) {
-    return this.httpClient.post(`${this.baseUrl}api/usuario`, bodyCadastroUsuario);
+    return this.httpClient.post(`${this.baseUrl}usuario`, bodyCadastroUsuario);
   }
 
   pesquisaNoticias(numeroPagina: number, tamanhoPagina: number, data: string): Observable<NoticiaModel[]> {

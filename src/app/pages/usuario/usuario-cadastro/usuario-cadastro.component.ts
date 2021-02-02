@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { NgxUiLoaderService } from 'ngx-ui-loader';
 import { UsuarioCadastroModel } from 'src/app/shared/models/usuario-cadastro.model';
 import { PrefeituraService } from 'src/app/shared/prefeitura.service';
 
+import * as toastr from 'toastr';
 @Component({
   selector: 'app-usuario-cadastro',
   templateUrl: './usuario-cadastro.component.html',
@@ -13,11 +15,13 @@ export class UsuarioCadastroComponent implements OnInit {
 
   cadastroUsuarioForm: FormGroup;
   returnUrl = 'login';
+  submitted = false;
 
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
-    private prefeituraService: PrefeituraService
+    private prefeituraService: PrefeituraService,
+    private readonly loaderService: NgxUiLoaderService
   ) { }
 
   ngOnInit() {
@@ -25,9 +29,10 @@ export class UsuarioCadastroComponent implements OnInit {
     this.cadastroUsuarioForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
       nome: ['', [Validators.required]],
-      senha: ['', [Validators.required]],
+      senha: ['', [Validators.required, Validators.minLength(4)]],
       documento: ['', [Validators.required]],
-      telefone: ['', []]
+      telefone: ['', []],
+      confimaSenha: ['', [Validators.required, Validators.minLength(4)]],
     });
   }
   get f() {
@@ -35,6 +40,7 @@ export class UsuarioCadastroComponent implements OnInit {
   }
 
   cadastrarUsuario() {
+    this.submitted = true;
     if (this.cadastroUsuarioForm.invalid) {
       return;
     }
@@ -45,20 +51,19 @@ export class UsuarioCadastroComponent implements OnInit {
       Email: this.f.email.value,
       Senha: this.f.senha.value,
     };
-    // this.loaderService.startLoader('global');
+
+    this.loaderService.startLoader('global');
     this.prefeituraService.postUsuario(bodyCadastroUsuario)
-      .pipe(
-        //finalize(() => this.loaderService.stopLoader('global'))
-      )
       .subscribe(
         () => {
-          // toastr.success('E-mail para recuperar senha foi enviado.', 'Esqueci Senha');
+          toastr.success('Usuário cadastrado.', 'Cadastro de Usuário');
+          this.loaderService.stopLoader('global');
           this.router.navigate([this.returnUrl]);
         },
-        () =>
-          console.log('Erro')
-    // toastr.error('Error ao tentar recuperar senha.', 'Esqueci Senha');
-    );
+        () => {
+          this.loaderService.stopLoader('global');
+          toastr.error('Error ao cadastrar usuário, tente novamente mais tarde.', 'Cadastro de Usuário');
+        });
   }
 
 }

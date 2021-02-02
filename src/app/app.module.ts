@@ -18,6 +18,8 @@ import { IptuConsultaComponent } from './pages/iptu/iptu-consulta/iptu-consulta.
 import { MgepComponent } from './pages/mgep/mgep.component';
 import { AuthGuardService } from './core/services/auth-guard.service';
 import { UsuarioModule } from './pages/usuario/usuario.module';
+import { NgxUiLoaderModule } from 'ngx-ui-loader';
+import { ngxLoaderConfig } from './shared/constants/ui-loader-config.const';
 
 @NgModule({
   declarations: [
@@ -39,6 +41,7 @@ import { UsuarioModule } from './pages/usuario/usuario.module';
     BlogModule,
     UsuarioModule,
     FontAwesomeModule,
+    NgxUiLoaderModule.forRoot(ngxLoaderConfig),
     RouterModule.forRoot([
       {
         path: '',
