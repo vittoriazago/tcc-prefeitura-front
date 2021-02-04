@@ -18,7 +18,7 @@ export class AuthService {
 
   login(email: string) {
     localStorage.setItem(LOGADO, 'true');
-    if (email.includes('serv')) {
+    if (email.includes('sgm')) {
       localStorage.setItem(PERFIL, 'servidor');
     } else if (email.includes('adm')) {
       localStorage.setItem(PERFIL, 'admin');

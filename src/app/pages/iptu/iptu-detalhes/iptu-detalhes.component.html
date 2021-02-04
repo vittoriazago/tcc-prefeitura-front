@@ -1,0 +1,78 @@
+
+<div class="container">
+  <div class="py-5 text-center">
+    <h2>IPTU - Imposto Predial Territorial Urbano</h2>
+  </div>
+
+  <div class="table-responsive">
+    <h5>Informações da propriedade:</h5>
+    <table class="table">
+      <tbody>
+        <tr>
+          <th scope="row">Nome Proprietário:</th>
+          <td>{{iptuDetalhes.nome}}</td>
+          <td></td>
+        </tr>
+        <tr>
+          <th scope="row">CPFCNPJ:</th>
+          <td>{{iptuDetalhes.documento}}</td>
+          <td></td>
+        </tr>
+        <tr>
+          <th scope="row">Exercício:</th>
+          <td>{{iptuDetalhes.ano}}</td>
+          <td></td>
+        </tr>
+        <tr>
+          <th scope="row">Logradouro:</th>
+          <td>{{iptuDetalhes.logradouro}}</td>
+          <td></td>
+        </tr>
+        <tr>
+          <th scope="row">CEP:</th>
+          <td>{{iptuDetalhes.cep}}</td>
+          <td></td>
+        </tr>
+        <tr>
+          <th scope="row">Tipo de imóvel:</th>
+          <td>{{iptuDetalhes.tipo}}</td>
+          <td></td>
+        </tr>
+        <tr>
+          <th scope="row">Valor do imóvel:</th>
+          <td>R$ {{iptuDetalhes.valor}}</td>
+          <td></td>
+        </tr>
+    </table>
+
+    <h5>Opções de pagamento:</h5>
+    <table class="table">
+      <thead>
+        <th>Opção</th>
+        <th>Valor da parcela</th>
+        <th>Valor Total</th>
+        <th>Data de vencimento</th>
+        <th>Opção de boleto</th>
+      </thead>
+      <tbody>
+        <tr *ngFor="let opcao of opcoesPagamento">
+          <th scope="row">{{opcao.quantidade}}x </th>
+          <td>R$ {{opcao.valorParcela | number : '1.2-2'}}</td>
+          <td>R$ {{opcao.valorTotal | number : '1.2-2'}}</td>
+          <td>{{opcao.dataVencimento | date: 'dd/MM/yyyy'}}</td>
+          <td>
+            <button  class="btn btn-secondary" data-toggle="tooltip" data-placement="top" title="Gerar boleto com esta opção">
+              Gerar boleto
+            </button>
+          </td>
+        </tr>
+    </table>
+    
+    <button  class="btn btn-secondary" data-toggle="tooltip" data-placement="top" title="Solicitação de Isenção para aposentados">
+      Solicitar isenção
+    </button>
+    <button  class="btn btn-secondary" data-toggle="tooltip" data-placement="top" title="Baixar relatório com as cobranças anteriores">
+      Relatório dos anteriores
+    </button>
+  </div>
+</div>
