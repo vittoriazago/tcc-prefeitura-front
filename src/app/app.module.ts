@@ -20,6 +20,7 @@ import { AuthGuardService } from './core/services/auth-guard.service';
 import { UsuarioModule } from './pages/usuario/usuario.module';
 import { NgxUiLoaderModule } from 'ngx-ui-loader';
 import { ngxLoaderConfig } from './shared/constants/ui-loader-config.const';
+import { TodosServicosComponent } from './pages/todos-servicos/todos-servicos.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { ngxLoaderConfig } from './shared/constants/ui-loader-config.const';
     HomeComponent,
     OuvidoriaComponent,
     MgepComponent,
+    TodosServicosComponent,
     AutenticacaoComponent,
   ],
   imports: [
@@ -70,6 +72,10 @@ import { ngxLoaderConfig } from './shared/constants/ui-loader-config.const';
       {
         path: 'cidadao',
         loadChildren: () => import('./pages/iptu/iptu.module').then(m => m.IptuModule)
+      },
+      {
+        path: 'todos-servicos',
+        component: TodosServicosComponent,
       },
       {
         path: 'gestaoprojetos',
