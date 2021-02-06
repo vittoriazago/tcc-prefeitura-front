@@ -11,13 +11,19 @@
             class="nav-item"
             [routerLinkActive]="['link-active']"
             [routerLinkActiveOptions]="{ exact: true }"
-          >
+          > 
+            <p class="titulo-logado" *ngIf="isLoggedIn()">Olá {{ getNome() }}</p>
             <a class="nav-link text-dark" *ngIf="!isLoggedIn()" [routerLink]="['/login']">
                <i class="fas fa-sign-in-alt">  Acesso restrito</i>
             </a>
-            <a class="nav-link text-dark" *ngIf="isLoggedIn()" (click)="logout()" >
-              <i class="fas fa-sign-out-alt"> Sair</i>
-            </a>
+            <div class="logado">
+              <a class="nav-link text-dark" *ngIf="isLoggedIn()">
+                <i class="fas fa-user"> Perfil</i>
+              </a>
+              <a class="nav-link text-dark" *ngIf="isLoggedIn()" (click)="logout()" >
+                <i class="fas fa-sign-out-alt"> Sair</i>
+              </a>
+            </div>
           </li>
         </ul>
     </div>

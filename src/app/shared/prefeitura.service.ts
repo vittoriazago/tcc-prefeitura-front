@@ -4,6 +4,8 @@ import { HttpClient } from '@angular/common/http';
 import { NoticiaModel } from './models/noticia.model';
 import { Observable } from 'rxjs';
 import { UsuarioCadastroModel } from './models/usuario-cadastro.model';
+import { UsuarioLoginModel } from './models/usuario-login.model';
+import { UsuarioLogadoModel } from './models/usuario-logado.model';
 
 @Injectable({
   providedIn: 'root'
@@ -19,6 +21,10 @@ export class PrefeituraService {
 
   postUsuario(bodyCadastroUsuario: UsuarioCadastroModel) {
     return this.httpClient.post(`${this.baseUrl}usuario`, bodyCadastroUsuario);
+  }
+
+  postUsuarioLogin(bodyLoginUsuario: UsuarioLoginModel) {
+    return this.httpClient.post<UsuarioLogadoModel>(`${this.baseUrl}usuario/login`, bodyLoginUsuario);
   }
 
   pesquisaNoticias(numeroPagina: number, tamanhoPagina: number, data: string): Observable<NoticiaModel[]> {

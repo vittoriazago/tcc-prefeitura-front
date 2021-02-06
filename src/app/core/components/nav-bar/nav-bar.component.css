@@ -38,3 +38,23 @@ a,
 a i {
     cursor: pointer;
 }
+
+.logado {
+  display: flex;
+  flex-direction: row;
+}
+
+.titulo-logado {
+  margin-left: 5px;
+  margin-bottom: 0px;
+}
+
+.navbar {
+  flex-wrap: nowrap;
+}
+.navbar .container {
+  flex-wrap: nowrap;
+}
+.navbar-nav {
+  font-size: .75rem;
+}

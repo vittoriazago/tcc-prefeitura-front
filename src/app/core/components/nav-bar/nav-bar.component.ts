@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 
@@ -7,23 +7,33 @@ import { AuthService } from '../../services/auth.service';
   templateUrl: './nav-bar.component.html',
   styleUrls: ['./nav-bar.component.css']
 })
-export class NavBarComponent {
+export class NavBarComponent implements OnInit {
+
+  nomeLogado: string;
 
   constructor(
     private auth: AuthService,
     private readonly router: Router) {
-    }
+  }
 
-    isLoggedIn(): boolean {
-      return this.auth.isLoggedIn();
-    }
+  ngOnInit(): void {
+    this.nomeLogado = this.getNome();
+  }
 
-    getPerfil(): string {
-      return this.auth.getPerfil();
-    }
+  isLoggedIn(): boolean {
+    return this.auth.isLoggedIn();
+  }
 
-    logout() {
-      this.auth.logout();
-      this.router.navigate(['/']);
-    }
+  getPerfil(): string {
+    return this.auth.getPerfil();
+  }
+
+  getNome(): string {
+    return this.auth.getNome().split(' ', 1)[0];
+  }
+
+  logout() {
+    this.auth.logout();
+    this.router.navigate(['/']);
+  }
 }

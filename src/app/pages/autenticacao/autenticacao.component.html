@@ -1,9 +1,19 @@
 <form *ngIf="!isLoggedIn()" [formGroup]="loginForm" class="form-signin">
-  <h1 class="h3 mb-3 font-weight-normal">Realizar login</h1>
-  <label for="inputEmail" class="sr-only">Email</label>
-  <input formControlName="login" ngClass="email" type="email" id="inputEmail" class="form-control" placeholder="Email" required autofocus>
-  <label for="inputPassword" class="sr-only">Senha</label>
-  <input formControlName="password" type="password" id="inputPassword" class="form-control" placeholder="Senha" required>
+  <h3 class="h3 mb-3 font-weight-normal">Realizar login</h3>
+  <div class="form-group">
+    <label for="email">Email</label>
+    <input type="text" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.email.errors }" formControlName="email" id="email">
+    <div *ngIf="submitted && f.email.errors"  class="invalid-feedback">
+      Email é obrigatório e deve conter um formato válido
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="senha">Senha</label>
+    <input type="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.senha.errors }" formControlName="senha" id="senha">
+    <div  *ngIf="submitted && f.senha.errors"  class="invalid-feedback">
+      Senha é obrigatório
+    </div>
+  </div>
   <div class="checkbox mb-3">
     <label>
       <input type="checkbox" value="remember-me"> Lembrar das minhas credenciais
@@ -13,7 +23,7 @@
   <a [routerLink]="['/usuario/cadastro']">Ainda não possui um cadastro? Clique aqui.</a>
 </form>
 <div *ngIf="isLoggedIn()" >
-  Você já está logado.  
+  Olá {{nomeLogado}}. Você já está autenticado no nosso sistema.  
   <button class="btn btn-sm-3 btn-primary btn-block" (click)="logout()">Fazer logout</button>
   <p></p>
   <p></p>
