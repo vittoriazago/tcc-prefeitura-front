@@ -27,6 +27,11 @@ export class PrefeituraService {
     return this.httpClient.post<UsuarioLogadoModel>(`${this.baseUrl}usuario/login`, bodyLoginUsuario);
   }
 
+  pesquisaIptu(documento: string) {
+    // pesquisa mockada
+    return this.httpClient.get<NoticiaModel[]>(`${this.baseUrl}noticias?numeroPagina=${1}&tamanhoPagina=${1}`);
+  }
+
   pesquisaNoticias(numeroPagina: number, tamanhoPagina: number, data: string): Observable<NoticiaModel[]> {
     return this.httpClient.get<NoticiaModel[]>(`${this.baseUrl}noticias?numeroPagina=${numeroPagina}&tamanhoPagina=${tamanhoPagina}`);
   }

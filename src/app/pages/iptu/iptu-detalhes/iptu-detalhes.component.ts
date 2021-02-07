@@ -23,7 +23,7 @@ export class IptuDetalhesComponent {
     };
 
     const hoje = moment();
-    for (let i = 1; i <= 10; i++) {
+    for (let i = 1; i <= 3; i++) {
       // simula juros fake
       const novoValor = this.iptuDetalhes.valor + ((i - 1) * 1.8);
       this.opcoesPagamento.push({

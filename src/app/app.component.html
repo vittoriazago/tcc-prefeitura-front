@@ -1,11 +1,11 @@
+
 <div>
-  <ngx-ui-loader id="loader" loaderId="global"></ngx-ui-loader>
-  <body>
     <app-nav-bar></app-nav-bar>
     <app-nav-menu></app-nav-menu>
     <div class="container">
+      
       <router-outlet></router-outlet>
     </div>
     <app-footer></app-footer>
-  </body>
+    <ngx-ui-loader [loaderId]="'global'" style="height: 100%;"></ngx-ui-loader>
 </div>
