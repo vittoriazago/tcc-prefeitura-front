@@ -23,37 +23,21 @@ export class IptuConsultaComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-
     this.consultaIptuForm = this.formBuilder.group({
       documento: ['', [Validators.required]],
     });
   }
+  
   get f() {
     return this.consultaIptuForm.controls;
   }
 
-  async consultarIptu() {
+  consultarIptu() {
     this.submitted = true;
     if (this.consultaIptuForm.invalid) {
       return;
     }
-
-    this.loaderService.startLoader('global');
-
-    this.prefeituraService.pesquisaIptu(this.consultaIptuForm.controls.documento.value)
-      .subscribe(async () => {
-        // serviço mockado
-        await this.delay(100);
-        this.router.navigate(['iptu/detalhes']);
-        this.loaderService.stopLoader('global');
-      },
-      () => {
-        toastr.error('Error ao consultar iptu, verifique seu documento ou tente novamente mais tarde.', 'Consulta de IPTU');
-        this.loaderService.stopLoader('global');
-      });
-
+    this.router.navigate(['iptu/detalhes']);
   }
-  delay(ms: number) {
-    return new Promise(resolve => setTimeout(resolve, ms));
-  }
+
 }

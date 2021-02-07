@@ -4,43 +4,43 @@
     <h4>IPTU - Imposto Predial Territorial Urbano</h4>
   </div>
 
-  <div class="table-responsive">
+  <div *ngIf="iptuDetalhes" class="table-responsive">
     <h5>Informações da propriedade:</h5>
     <table class="table">
       <tbody>
         <tr>
           <th scope="row">Nome Proprietário:</th>
-          <td>{{iptuDetalhes.nome}}</td>
+          <td>{{iptuDetalhes.Nome}}</td>
           <td></td>
         </tr>
         <tr>
           <th scope="row">CPFCNPJ:</th>
-          <td>{{iptuDetalhes.documento}}</td>
+          <td>{{iptuDetalhes.Documento}}</td>
           <td></td>
         </tr>
         <tr>
           <th scope="row">Exercício:</th>
-          <td>{{iptuDetalhes.ano}}</td>
+          <td>{{iptuDetalhes.Ano}}</td>
           <td></td>
         </tr>
         <tr>
           <th scope="row">Logradouro:</th>
-          <td>{{iptuDetalhes.logradouro}}</td>
+          <td>{{iptuDetalhes.Logradouro}}</td>
           <td></td>
         </tr>
         <tr>
           <th scope="row">CEP:</th>
-          <td>{{iptuDetalhes.cep}}</td>
+          <td>{{iptuDetalhes.Cep}}</td>
           <td></td>
         </tr>
         <tr>
           <th scope="row">Tipo de imóvel:</th>
-          <td>{{iptuDetalhes.tipo}}</td>
+          <td>{{iptuDetalhes.Tipo}}</td>
           <td></td>
         </tr>
         <tr>
           <th scope="row">Valor do imposto:</th>
-          <td>R$ {{iptuDetalhes.valor}}</td>
+          <td>R$ {{iptuDetalhes.Valor}}</td>
           <td></td>
         </tr>
     </table>
@@ -55,11 +55,11 @@
         <th>Opção de boleto</th>
       </thead>
       <tbody>
-        <tr *ngFor="let opcao of opcoesPagamento">
-          <th scope="row">{{opcao.quantidade}}x </th>
-          <td>R$ {{opcao.valorParcela | number : '1.2-2'}}</td>
-          <td>R$ {{opcao.valorTotal | number : '1.2-2'}}</td>
-          <td>{{opcao.dataVencimento | date: 'dd/MM/yyyy'}}</td>
+        <tr *ngFor="let opcao of iptuDetalhes.OpcoesPagamento">
+          <th scope="row">{{opcao.Quantidade}}x </th>
+          <td>R$ {{opcao.ValorParcela | number : '1.2-2'}}</td>
+          <td>R$ {{opcao.ValorTotal | number : '1.2-2'}}</td>
+          <td>{{opcao.DataVencimento | date: 'dd/MM/yyyy'}}</td>
           <td>
             <button  class="btn btn-secondary" data-toggle="tooltip" data-placement="top" title="Gerar boleto com esta opção">
               Gerar boleto

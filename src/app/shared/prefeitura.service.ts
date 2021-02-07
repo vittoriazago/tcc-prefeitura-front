@@ -6,6 +6,7 @@ import { Observable } from 'rxjs';
 import { UsuarioCadastroModel } from './models/usuario-cadastro.model';
 import { UsuarioLoginModel } from './models/usuario-login.model';
 import { UsuarioLogadoModel } from './models/usuario-logado.model';
+import { IptuDetalhesModel } from './models/iptu-detalhes.model';
 
 @Injectable({
   providedIn: 'root'
@@ -29,7 +30,7 @@ export class PrefeituraService {
 
   pesquisaIptu(documento: string) {
     // pesquisa mockada
-    return this.httpClient.get<NoticiaModel[]>(`${this.baseUrl}noticias?numeroPagina=${1}&tamanhoPagina=${1}`);
+    return this.httpClient.get<IptuDetalhesModel>(`${this.baseUrl}iptu`);
   }
 
   pesquisaNoticias(numeroPagina: number, tamanhoPagina: number, data: string): Observable<NoticiaModel[]> {

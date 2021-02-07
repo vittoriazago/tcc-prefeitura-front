@@ -1,37 +1,34 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import * as moment from 'moment';
+import { NgxUiLoaderService } from 'ngx-ui-loader';
+import { IptuDetalhesModel } from 'src/app/shared/models/iptu-detalhes.model';
+import { PrefeituraService } from 'src/app/shared/prefeitura.service';
 
+import * as toastr from 'toastr';
 @Component({
   selector: 'app-iptu-detalhes',
   templateUrl: './iptu-detalhes.component.html',
   styleUrls: ['./iptu-detalhes.component.css']
 })
-export class IptuDetalhesComponent {
+export class IptuDetalhesComponent implements OnInit {
 
-  iptuDetalhes: any;
-  opcoesPagamento = new Array();
+  iptuDetalhes: IptuDetalhesModel;
 
-  constructor() {
-    this.iptuDetalhes = {
-      nome: 'Mariete de Souza Barros',
-      documento: '493.122.654-22',
-      ano: '2021',
-      logradouro: 'Rua Carlos Filho 3-40, Centro',
-      cep: '17129-001',
-      tipo: 'CASA',
-      valor: 225,
-    };
+  constructor(
+    private readonly loaderService: NgxUiLoaderService,
+    private prefeituraService: PrefeituraService) {
+  }
+  ngOnInit(): void {
+    this.loaderService.startLoader('global');
 
-    const hoje = moment();
-    for (let i = 1; i <= 3; i++) {
-      // simula juros fake
-      const novoValor = this.iptuDetalhes.valor + ((i - 1) * 1.8);
-      this.opcoesPagamento.push({
-        quantidade: i,
-        valorParcela: (novoValor / i),
-        valorTotal: novoValor,
-        dataVencimento: hoje.add(1, 'months').format()
+    this.prefeituraService.pesquisaIptu('mock')
+      .subscribe(result => {
+        this.iptuDetalhes = result;
+        this.loaderService.stopLoader('global');
+      },
+      () => {
+        toastr.error('Error ao consultar iptu, verifique seu documento ou tente novamente mais tarde.', 'Consulta de IPTU');
+        this.loaderService.stopLoader('global');
       });
-    }
   }
 }
